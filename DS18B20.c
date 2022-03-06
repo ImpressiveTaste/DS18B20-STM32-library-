@@ -12,7 +12,7 @@
 #include "main.h"
 
 
-int8_t DS18B20_Start (void) //Funzione di inizializzazione
+int8_t DS18B20_Start (void) //Initialization function
 {
 	int8_t Response = 0;
 
@@ -37,7 +37,7 @@ int8_t DS18B20_Start (void) //Funzione di inizializzazione
 	//HAL_Delay(80);
 
 
-	if (!(HAL_GPIO_ReadPin (DS18B20_GPIO_Port, DS18B20_Pin))) Response = 1;    // if the pin is low i.e the presence pulse is detected (se va a 0)
+	if (!(HAL_GPIO_ReadPin (DS18B20_GPIO_Port, DS18B20_Pin))) Response = 1;    // if the pin is low i.e the presence pulse is detected (if it goes to 0)
 	else Response = -1;
 
 	delay (400); // 480 us delay totally.
@@ -134,7 +134,7 @@ uint8_t DS18B20_Read (void)
 		HAL_GPIO_Init(DS18B20_GPIO_Port, &GPIO_InitStruct);  // set as input
 		if (HAL_GPIO_ReadPin (DS18B20_GPIO_Port, DS18B20_Pin))  // if the pin is HIGH
 		{
-			value |= 1<<i;  // read = 1 //leggi dato input
+			value |= 1<<i;  // read = 1 //read data input
 		}
 		delay (60);  // wait for 60 us
 		//HAL_Delay(60);
